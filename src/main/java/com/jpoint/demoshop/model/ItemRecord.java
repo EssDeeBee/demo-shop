@@ -14,6 +14,7 @@ import java.util.List;
 public class ItemRecord {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     private Double price;
