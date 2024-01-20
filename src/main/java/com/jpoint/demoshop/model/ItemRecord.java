@@ -3,6 +3,8 @@ package com.jpoint.demoshop.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -18,6 +20,8 @@ public class ItemRecord {
     private String description;
 
     @ManyToOne
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private SellerRecord sellerRecord;
 
     @OneToMany

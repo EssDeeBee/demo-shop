@@ -1,0 +1,49 @@
+package com.jpoint.demoshop.service.generators;
+
+import com.jpoint.demoshop.model.ItemRecord;
+import com.jpoint.demoshop.model.SellerRecord;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Random;
+
+@Service
+public class ItemGenerator {
+    Random random = new Random();
+
+    public ItemRecord generateItem(SellerRecord sellerRecord) {
+        ItemRecord itemRecord = new ItemRecord();
+        itemRecord.setId(null);
+        itemRecord.setName(generateItemName());
+        itemRecord.setPrice(random.nextDouble(1, 1_000));
+        itemRecord.setDescription(generateDescription());
+        itemRecord.setSellerRecord(sellerRecord);
+        itemRecord.setAccessories(List.of());
+
+        return itemRecord;
+    }
+
+    private String generateItemName() {
+        List<String> items = List.of(
+                "TV",
+                "PC",
+                "Laptop",
+                "Cooler stand",
+                "PS5"
+        );
+
+        return items.get(random.nextInt(0, items.size()));
+    }
+
+    private String generateDescription() {
+        List<String> descriptions = List.of(
+                "Is very good",
+                "Is very fast",
+                "Is very cool",
+                "Too expensive",
+                "Amazing!"
+        );
+
+        return descriptions.get(random.nextInt(0, descriptions.size()));
+    }
+}
