@@ -14,6 +14,7 @@ import java.util.Set;
 public class ShopRecord {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     private String address;
@@ -25,6 +26,6 @@ public class ShopRecord {
     @EqualsAndHashCode.Exclude
     private RegionRecord regionRecord;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<SellerRecord> sellers;
 }

@@ -14,6 +14,7 @@ import java.util.Set;
 public class RegionRecord {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     private String location;
@@ -23,6 +24,6 @@ public class RegionRecord {
     @EqualsAndHashCode.Exclude
     private CountryRecord countryRecord;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<ShopRecord> shops;
 }
