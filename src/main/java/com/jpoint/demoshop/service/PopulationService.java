@@ -1,9 +1,13 @@
 package com.jpoint.demoshop.service;
 
 
+import com.jpoint.demoshop.model.CountryRecord;
+import com.jpoint.demoshop.repositories.CountryRecordRepository;
 import com.jpoint.demoshop.repositories.SellerRecordCrudRepository;
+import com.jpoint.demoshop.service.generators.CountryGenerator;
 import com.jpoint.demoshop.service.generators.SellerGenerator;
 import jakarta.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,7 +15,11 @@ import java.util.List;
 import java.util.Random;
 
 @Service
+@RequiredArgsConstructor
 public class PopulationService {
+
+    private final CountryGenerator countryGenerator;
+    private final CountryRecordRepository countryRecordRepository;
 
     @Resource
     private SellerRecordCrudRepository sellerRecordCrudRepository;
@@ -20,6 +28,11 @@ public class PopulationService {
     private SellerGenerator sellerGenerator;
 
     private final Random random = new Random();
+
+    public void populateCountries(){
+        CountryRecord countryRecord = countryGenerator.generateCountry(1, 2, 3, 3, 5);
+        countryRecordRepository.save(countryRecord);
+    }
 
     @Transactional
     public void populateTables() {
