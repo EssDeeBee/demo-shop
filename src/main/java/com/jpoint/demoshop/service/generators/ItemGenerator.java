@@ -1,15 +1,22 @@
 package com.jpoint.demoshop.service.generators;
 
+import com.jpoint.demoshop.model.AccessoryRecord;
 import com.jpoint.demoshop.model.ItemRecord;
 import com.jpoint.demoshop.model.SellerRecord;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 @Service
 public class ItemGenerator {
     Random random = new Random();
+
+    @Resource
+    private AccessoryGenerator accessoryGenerator;
 
     public ItemRecord generateItem(SellerRecord sellerRecord) {
         ItemRecord itemRecord = new ItemRecord();
@@ -18,7 +25,12 @@ public class ItemGenerator {
         itemRecord.setPrice(random.nextDouble(1, 1_000));
         itemRecord.setDescription(generateDescription());
         itemRecord.setSellerRecord(sellerRecord);
-        itemRecord.setAccessories(List.of());
+
+        var accessories = new ArrayList<AccessoryRecord>();
+        for (int i = 0; i < 3; i++) {
+            accessories.add(accessoryGenerator.generateAccessory());
+        }
+        itemRecord.setAccessories(accessories);
 
         return itemRecord;
     }

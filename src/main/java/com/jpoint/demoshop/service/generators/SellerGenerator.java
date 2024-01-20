@@ -2,6 +2,7 @@ package com.jpoint.demoshop.service.generators;
 
 import com.jpoint.demoshop.model.ItemRecord;
 import com.jpoint.demoshop.model.SellerRecord;
+import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,10 @@ public class SellerGenerator {
     private final Random random = new Random();
     private final CommonGenerator commonGenerator = new CommonGenerator();
 
-    public SellerRecord generateSeller() {
+    @Resource
+    private ItemGenerator itemGenerator;
+
+    public SellerRecord generateSeller(int itemCount) {
         String firstName = generateFirstName();
         String lastName = generateLastName();
 
@@ -26,17 +30,17 @@ public class SellerGenerator {
         sellerRecord.setLastName(generateLastName());
         sellerRecord.setEmail(firstName + "-" + lastName + "@mail.com");
         sellerRecord.setPhone(commonGenerator.generatePhone());
-        sellerRecord.setItems(generateItems(sellerRecord));
+        sellerRecord.setItems(generateItems(sellerRecord, itemCount));
 
         return sellerRecord;
     }
 
-    private Set<ItemRecord> generateItems(SellerRecord sellerRecord) {
+    private Set<ItemRecord> generateItems(SellerRecord sellerRecord, int count) {
         Set<ItemRecord> items = new HashSet<>();
         int itemsNumber = random.nextInt(0, 100);
 
-        for (int i = 0; i < itemsNumber; i++) {
-            items.add(new ItemGenerator().generateItem(sellerRecord));
+        for (int i = 0; i < count; i++) {
+            items.add(itemGenerator.generateItem(sellerRecord));
         }
 
         return items;

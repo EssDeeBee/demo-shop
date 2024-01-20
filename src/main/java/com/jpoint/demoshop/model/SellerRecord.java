@@ -1,9 +1,6 @@
 package com.jpoint.demoshop.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Set;
@@ -15,6 +12,7 @@ import java.util.Set;
 public class SellerRecord {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String firstName;
     private String lastName;
@@ -22,6 +20,6 @@ public class SellerRecord {
     private String phone;
 
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<ItemRecord> items;
 }

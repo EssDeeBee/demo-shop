@@ -22,7 +22,7 @@ class PopulationServiceTest {
         int numberOfItems = random.nextInt(1, 10_000);
         List<SellerRecord> items = new LinkedList<>();
         for (int i = 0; i < numberOfItems; i++) {
-            items.add(new SellerGenerator().generateSeller());
+            items.add(new SellerGenerator().generateSeller(random.nextInt(0, 100)));
         }
         items.forEach(System.out::println);
         System.out.println(items.size());

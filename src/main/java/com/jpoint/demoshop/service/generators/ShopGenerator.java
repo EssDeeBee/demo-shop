@@ -39,7 +39,7 @@ public class ShopGenerator {
         Set<SellerRecord> sellers = new HashSet<>();
         int sellersNumber = random.nextInt(0, 1_000);
         for(int i = 0; i < sellersNumber;  i++){
-            sellers.add(sellerGenerator.generateSeller());
+            sellers.add(sellerGenerator.generateSeller(random.nextInt(0, 100)));
         }
         return sellers;
     }

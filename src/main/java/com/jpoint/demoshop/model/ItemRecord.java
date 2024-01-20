@@ -25,7 +25,7 @@ public class ItemRecord {
     @EqualsAndHashCode.Exclude
     private SellerRecord sellerRecord;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<AccessoryRecord> accessories;
 
 }
