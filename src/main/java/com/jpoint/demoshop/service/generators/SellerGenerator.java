@@ -14,6 +14,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class SellerGenerator {
     private final Random random = new Random();
+    private final CommonGenerator commonGenerator = new CommonGenerator();
 
     public SellerRecord generateSeller() {
         String firstName = generateFirstName();
@@ -24,7 +25,7 @@ public class SellerGenerator {
         sellerRecord.setFirstName(generateFirstName());
         sellerRecord.setLastName(generateLastName());
         sellerRecord.setEmail(firstName + "-" + lastName + "@mail.com");
-        sellerRecord.setPhone(generatePhone());
+        sellerRecord.setPhone(commonGenerator.generatePhone());
         sellerRecord.setItems(generateItems(sellerRecord));
 
         return sellerRecord;
@@ -32,8 +33,9 @@ public class SellerGenerator {
 
     private Set<ItemRecord> generateItems(SellerRecord sellerRecord) {
         Set<ItemRecord> items = new HashSet<>();
+        int itemsNumber = random.nextInt(0, 100);
 
-        for (int i = 0; i < random.nextInt(0, 100); i++) {
+        for (int i = 0; i < itemsNumber; i++) {
             items.add(new ItemGenerator().generateItem(sellerRecord));
         }
 
@@ -72,18 +74,6 @@ public class SellerGenerator {
         );
 
         return lastNames.get(random.nextInt(0, lastNames.size()));
-    }
-
-    public String generatePhone() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(random.nextInt(0, 10));
-        stringBuilder.append(random.nextInt(0, 10));
-        stringBuilder.append(random.nextInt(0, 10));
-        stringBuilder.append(random.nextInt(0, 10));
-        stringBuilder.append(random.nextInt(0, 10));
-        stringBuilder.append(random.nextInt(0, 10));
-        stringBuilder.append(random.nextInt(0, 10));
-        return stringBuilder.toString();
     }
 
 }

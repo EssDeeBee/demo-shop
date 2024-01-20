@@ -2,6 +2,8 @@ package com.jpoint.demoshop.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.Set;
 
@@ -19,6 +21,8 @@ public class ShopRecord {
     private String phone;
 
     @ManyToOne
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private RegionRecord regionRecord;
 
     @OneToMany
