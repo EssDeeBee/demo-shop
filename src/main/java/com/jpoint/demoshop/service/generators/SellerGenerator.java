@@ -14,7 +14,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class SellerGenerator {
     private final Random random = new Random();
-    private final CommonGenerator commonGenerator = new CommonGenerator();
+    private final CommonGenerator commonGenerator;
     private final ItemGenerator itemGenerator;
 
     public SellerRecord generateSeller(int itemCount, int accessoriesCount) {

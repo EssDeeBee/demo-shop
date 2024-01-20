@@ -15,13 +15,14 @@ import java.util.Random;
 public class ItemGenerator {
     private final Random random = new Random();
     private final AccessoryGenerator accessoryGenerator;
+    private final CommonGenerator commonGenerator;
 
     public ItemRecord generateItem(SellerRecord sellerRecord, int accessoriesNumber) {
         ItemRecord itemRecord = new ItemRecord();
         itemRecord.setId(null);
         itemRecord.setName(generateItemName());
-        itemRecord.setPrice(random.nextDouble(1, 1_000));
-        itemRecord.setDescription(generateDescription());
+        itemRecord.setPrice(commonGenerator.generatePrice());
+        itemRecord.setDescription(commonGenerator.generateDescription());
         itemRecord.setSellerRecord(sellerRecord);
 
         var accessories = new ArrayList<AccessoryRecord>();
@@ -45,15 +46,4 @@ public class ItemGenerator {
         return items.get(random.nextInt(0, items.size()));
     }
 
-    private String generateDescription() {
-        List<String> descriptions = List.of(
-                "Is very good",
-                "Is very fast",
-                "Is very cool",
-                "Too expensive",
-                "Amazing!"
-        );
-
-        return descriptions.get(random.nextInt(0, descriptions.size()));
-    }
 }
