@@ -35,14 +35,15 @@ public class ShopGenerator {
         return shopRecord;
     }
 
-    private Set<SellerRecord> generateSellers(){
+    private Set<SellerRecord> generateSellers() {
         Set<SellerRecord> sellers = new HashSet<>();
         int sellersNumber = random.nextInt(0, 1_000);
-        for(int i = 0; i < sellersNumber;  i++){
+        for (int i = 0; i < sellersNumber; i++) {
             sellers.add(sellerGenerator.generateSeller(random.nextInt(0, 100)));
         }
         return sellers;
     }
+
     private String generateShopName() {
         List<String> shopNames = List.of(
                 "Bluebell Boutique",
@@ -95,8 +96,8 @@ public class ShopGenerator {
         return addresses.get(random.nextInt(0, addresses.size()));
     }
 
-    private String generateEmail(@NonNull String shopName){
-       return shopName.replace(" ", "_").toLowerCase();
+    private String generateEmail(@NonNull String shopName) {
+        return shopName.replace(" ", "_").toLowerCase();
     }
 
 }

@@ -30,7 +30,7 @@ public class AccessoryGenerator {
         return names.get(random.nextInt(0, names.size()));
     }
 
-    private String generateDescription(){
+    private String generateDescription() {
         List<String> descriptions = List.of(
                 "Is very good",
                 "Is very fast",

@@ -2,7 +2,6 @@ package com.jpoint.demoshop.service.generators;
 
 import com.jpoint.demoshop.model.ItemRecord;
 import com.jpoint.demoshop.model.SellerRecord;
-import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +15,7 @@ import java.util.Set;
 public class SellerGenerator {
     private final Random random = new Random();
     private final CommonGenerator commonGenerator = new CommonGenerator();
-
-    @Resource
-    private ItemGenerator itemGenerator;
+    private final ItemGenerator itemGenerator;
 
     public SellerRecord generateSeller(int itemCount) {
         String firstName = generateFirstName();
@@ -37,7 +34,6 @@ public class SellerGenerator {
 
     private Set<ItemRecord> generateItems(SellerRecord sellerRecord, int count) {
         Set<ItemRecord> items = new HashSet<>();
-        int itemsNumber = random.nextInt(0, 100);
 
         for (int i = 0; i < count; i++) {
             items.add(itemGenerator.generateItem(sellerRecord));

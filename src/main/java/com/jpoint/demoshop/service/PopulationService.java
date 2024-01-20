@@ -1,16 +1,12 @@
 package com.jpoint.demoshop.service;
 
 
-import com.jpoint.demoshop.model.*;
-import com.jpoint.demoshop.repositories.ItemRecordCrudRepository;
 import com.jpoint.demoshop.repositories.SellerRecordCrudRepository;
 import com.jpoint.demoshop.service.generators.SellerGenerator;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
