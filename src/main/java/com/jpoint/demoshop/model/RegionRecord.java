@@ -11,11 +11,8 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "region")
-public class RegionRecord {
+public class RegionRecord extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
     private String name;
     private String location;
 

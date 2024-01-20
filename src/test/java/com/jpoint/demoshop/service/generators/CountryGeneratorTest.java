@@ -15,7 +15,7 @@ class CountryGeneratorTest {
 
     @Test
     void shouldGenerateCountryWhenMethodInvoked() {
-        CountryRecord countryRecord = countryGenerator.generateCountry(1, 1,1, 1, 1);
+        CountryRecord countryRecord = countryGenerator.generateCountry(1, 1, 1, 1, 1);
         System.out.println(countryRecord);
         Assertions.assertThat(countryRecord).isNotNull();
     }

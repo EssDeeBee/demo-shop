@@ -21,7 +21,9 @@ public class DemoShopApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        long l = System.currentTimeMillis();
         populationService.populateTables();
+        System.out.printf("Executed in %d second(s) \n", (System.currentTimeMillis() - l) / 1000);
         System.out.println("OK");
     }
 }

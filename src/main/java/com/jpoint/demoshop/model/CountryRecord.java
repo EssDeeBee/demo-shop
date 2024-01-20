@@ -1,6 +1,9 @@
 package com.jpoint.demoshop.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 import java.util.Set;
@@ -9,11 +12,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "country")
-public class CountryRecord {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+public class CountryRecord extends BaseEntity {
 
     private String name;
     private String code;

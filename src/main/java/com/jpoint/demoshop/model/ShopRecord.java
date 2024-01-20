@@ -11,11 +11,8 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "shop")
-public class ShopRecord {
+public class ShopRecord extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
     private String name;
     private String address;
     private String email;
