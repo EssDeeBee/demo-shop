@@ -19,7 +19,7 @@ public class PopulationService {
     @Resource
     private SellerGenerator sellerGenerator;
 
-    Random random = new Random();
+    private final Random random = new Random();
 
     @Transactional
     public void populateTables() {
@@ -35,7 +35,8 @@ public class PopulationService {
         // int numberOfItems = 1_000_000;
         // int numberOfItems = 200_000;
         int numberOfItems = 1_000;
-        sellerRecordCrudRepository.save(sellerGenerator.generateSeller(numberOfItems));
+        int numberOfAccessories = 5;
+        sellerRecordCrudRepository.save(sellerGenerator.generateSeller(numberOfItems, numberOfAccessories));
     }
 
     /*

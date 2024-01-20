@@ -15,7 +15,7 @@ class SellerGeneratorTest {
 
     @Test
     void shouldGenerateSellerWhenMethodInvoked() {
-        SellerRecord sellerRecord = sellerGenerator.generateSeller(10);
+        SellerRecord sellerRecord = sellerGenerator.generateSeller(10, 1);
         System.out.println(sellerRecord);
         Assertions.assertThat(sellerRecord).isNotNull();
     }

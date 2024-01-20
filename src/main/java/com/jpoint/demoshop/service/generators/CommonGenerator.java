@@ -6,7 +6,7 @@ import java.util.Random;
 
 @Service
 public class CommonGenerator {
-    final Random random = new Random();
+    private final Random random = new Random();
 
     public String generatePhone() {
         return String.valueOf(random.nextInt(0, 10)) +

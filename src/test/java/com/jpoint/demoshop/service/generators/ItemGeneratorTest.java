@@ -16,7 +16,7 @@ class ItemGeneratorTest {
 
     @Test
     void shouldGenerateItemsWhenMethodInvoked() {
-        ItemRecord itemRecord = itemGenerator.generateItem(null);
+        ItemRecord itemRecord = itemGenerator.generateItem(null, 1);
         System.out.println(itemRecord);
         Assertions.assertThat(itemRecord).isNotNull();
     }

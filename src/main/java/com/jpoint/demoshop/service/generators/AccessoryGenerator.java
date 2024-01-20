@@ -1,6 +1,7 @@
 package com.jpoint.demoshop.service.generators;
 
 import com.jpoint.demoshop.model.AccessoryRecord;
+import com.jpoint.demoshop.model.ItemRecord;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,11 +12,13 @@ public class AccessoryGenerator {
 
     private final Random random = new Random();
 
-    public AccessoryRecord generateAccessory() {
+    public AccessoryRecord generateAccessory(ItemRecord itemRecord) {
         var accessoryRecord = new AccessoryRecord();
+        accessoryRecord.setId(null);
         accessoryRecord.setName(generateAccessoryName());
-        accessoryRecord.setDescription(generateDescription());
         accessoryRecord.setPrice(generatePrice());
+        accessoryRecord.setDescription(generateDescription());
+        accessoryRecord.setItemRecord(itemRecord);
         return accessoryRecord;
     }
 

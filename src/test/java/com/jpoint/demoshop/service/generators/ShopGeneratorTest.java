@@ -15,7 +15,7 @@ class ShopGeneratorTest {
 
     @Test
     void shouldGenerateShopWhenMethodInvoked() {
-        ShopRecord shopRecord = shopGenerator.generateShop(null);
+        ShopRecord shopRecord = shopGenerator.generateShop(null, 1, 1);
         System.out.println(shopRecord);
         Assertions.assertThat(shopRecord).isNotNull();
     }

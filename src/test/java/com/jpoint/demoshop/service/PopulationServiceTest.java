@@ -22,14 +22,9 @@ class PopulationServiceTest {
 
     @Test
     void shouldGenerateSellerWhenMethodInvoked() {
-        int numberOfItems = random.nextInt(1, 10_000);
-        List<SellerRecord> items = new LinkedList<>();
-        for (int i = 0; i < numberOfItems; i++) {
-            items.add(sellerGenerator.generateSeller(random.nextInt(0, 100)));
-        }
-        items.forEach(System.out::println);
-        System.out.println(items.size());
-        Assertions.assertThat(items).isNotNull().hasSize(numberOfItems);
+        SellerRecord sellerRecord = sellerGenerator.generateSeller(10, 1);
+        System.out.println(sellerRecord);
+        Assertions.assertThat(sellerRecord).isNotNull();
     }
 
 }

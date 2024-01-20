@@ -17,7 +17,7 @@ public class SellerGenerator {
     private final CommonGenerator commonGenerator = new CommonGenerator();
     private final ItemGenerator itemGenerator;
 
-    public SellerRecord generateSeller(int itemCount) {
+    public SellerRecord generateSeller(int itemCount, int accessoriesCount) {
         String firstName = generateFirstName();
         String lastName = generateLastName();
 
@@ -27,16 +27,16 @@ public class SellerGenerator {
         sellerRecord.setLastName(generateLastName());
         sellerRecord.setEmail(firstName + "-" + lastName + "@mail.com");
         sellerRecord.setPhone(commonGenerator.generatePhone());
-        sellerRecord.setItems(generateItems(sellerRecord, itemCount));
+        sellerRecord.setItems(generateItems(sellerRecord, itemCount, accessoriesCount));
 
         return sellerRecord;
     }
 
-    private Set<ItemRecord> generateItems(SellerRecord sellerRecord, int count) {
+    private Set<ItemRecord> generateItems(SellerRecord sellerRecord, int itemCount, int accessoriesCount) {
         Set<ItemRecord> items = new HashSet<>();
 
-        for (int i = 0; i < count; i++) {
-            items.add(itemGenerator.generateItem(sellerRecord));
+        for (int i = 0; i < itemCount; i++) {
+            items.add(itemGenerator.generateItem(sellerRecord, accessoriesCount));
         }
 
         return items;
