@@ -9,11 +9,8 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "seller")
-public class SellerRecord {
+public class SellerRecord extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
     private String firstName;
     private String lastName;
     private String email;

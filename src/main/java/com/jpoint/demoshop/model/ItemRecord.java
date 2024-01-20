@@ -11,11 +11,8 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "item")
-public class ItemRecord {
+public class ItemRecord extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
     private String name;
     private Double price;
     private String description;

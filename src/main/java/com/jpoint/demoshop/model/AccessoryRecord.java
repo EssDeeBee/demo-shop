@@ -9,11 +9,8 @@ import lombok.ToString;
 @Data
 @Entity
 @Table(name = "accessory")
-public class AccessoryRecord {
+public class AccessoryRecord extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
     private String name;
     private Double price;
     private String description;
