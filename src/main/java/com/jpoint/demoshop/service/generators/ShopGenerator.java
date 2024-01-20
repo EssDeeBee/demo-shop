@@ -21,7 +21,7 @@ public class ShopGenerator {
     private final SellerGenerator sellerGenerator;
 
 
-    public ShopRecord generateShop(RegionRecord regionRecord, int itemCount, int accessoriesCount) {
+    public ShopRecord generateShop(RegionRecord regionRecord, int sellerCount, int itemCount, int accessoriesCount) {
         String shopName = generateShopName();
 
         ShopRecord shopRecord = new ShopRecord();
@@ -31,14 +31,13 @@ public class ShopGenerator {
         shopRecord.setEmail(generateEmail(shopName));
         shopRecord.setPhone(commonGenerator.generatePhone());
         shopRecord.setRegionRecord(regionRecord);
-        shopRecord.setSellers(generateSellers(itemCount, accessoriesCount));
+        shopRecord.setSellers(generateSellers(sellerCount, itemCount, accessoriesCount));
         return shopRecord;
     }
 
-    private Set<SellerRecord> generateSellers(int itemCount, int accessoriesCount) {
+    private Set<SellerRecord> generateSellers(int sellerCount, int itemCount, int accessoriesCount) {
         Set<SellerRecord> sellers = new HashSet<>();
-        int sellersNumber = random.nextInt(0, 1_000);
-        for (int i = 0; i < sellersNumber; i++) {
+        for (int i = 0; i < sellerCount; i++) {
             sellers.add(sellerGenerator.generateSeller(itemCount, accessoriesCount));
         }
         return sellers;

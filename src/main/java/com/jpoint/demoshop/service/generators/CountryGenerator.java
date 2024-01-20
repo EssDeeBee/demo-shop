@@ -18,22 +18,22 @@ public class CountryGenerator {
 
     private final RegionGenerator regionGenerator;
 
-    public CountryRecord generateCountry(int regionCount, int shopCount, int itemCount, int accessoriesCount) {
+    public CountryRecord generateCountry(int regionCount, int shopCount, int itemCount, int sellerCount, int accessoriesCount) {
         CountryRecord countryRecord = new CountryRecord();
         countryRecord.setId(null);
         countryRecord.setName(generateCountryName());
         countryRecord.setCode(generateCountryCode());
         countryRecord.setTimezone(generateTimezone());
         countryRecord.setFlagCode(generateCountryFlagCode());
-        countryRecord.setRegions(generateRegions(countryRecord, regionCount, shopCount, itemCount, accessoriesCount));
+        countryRecord.setRegions(generateRegions(countryRecord, regionCount, shopCount, sellerCount, itemCount, accessoriesCount));
 
         return countryRecord;
     }
 
-    private Set<RegionRecord> generateRegions(CountryRecord countryRecord, int regionCount, int shopCount, int itemCount, int accessoriesCount) {
+    private Set<RegionRecord> generateRegions(CountryRecord countryRecord, int regionCount, int shopCount, int sellerCount, int itemCount, int accessoriesCount) {
         Set<RegionRecord> regions = new HashSet<>();
         for (int i = 0; i < regionCount; i++) {
-            regions.add(regionGenerator.generateRegion(countryRecord, shopCount, itemCount, accessoriesCount));
+            regions.add(regionGenerator.generateRegion(countryRecord, shopCount, sellerCount, itemCount, accessoriesCount));
         }
 
         return regions;

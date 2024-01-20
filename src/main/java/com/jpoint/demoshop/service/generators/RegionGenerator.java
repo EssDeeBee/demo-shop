@@ -19,21 +19,21 @@ public class RegionGenerator {
 
     private final ShopGenerator shopGenerator;
 
-    public RegionRecord generateRegion(CountryRecord countryRecord, int shopCount, int itemCount, int accessoriesCount) {
+    public RegionRecord generateRegion(CountryRecord countryRecord, int shopCount, int sellerCount, int itemCount, int accessoriesCount) {
         RegionRecord regionRecord = new RegionRecord();
         regionRecord.setId(null);
         regionRecord.setName(generateName());
         regionRecord.setLocation(generateLocationName());
         regionRecord.setCountryRecord(countryRecord);
-        regionRecord.setShops(generateShops(regionRecord, shopCount, itemCount, accessoriesCount));
+        regionRecord.setShops(generateShops(regionRecord, shopCount, sellerCount, itemCount, accessoriesCount));
 
         return regionRecord;
     }
 
-    private Set<ShopRecord> generateShops(RegionRecord regionRecord, int shopCount, int itemCount, int accessoriesCount) {
+    private Set<ShopRecord> generateShops(RegionRecord regionRecord, int shopCount, int sellerCount, int itemCount, int accessoriesCount) {
         Set<ShopRecord> shops = new HashSet<>();
         for (int i = 0; i < shopCount; i++) {
-            shops.add(shopGenerator.generateShop(regionRecord, itemCount, accessoriesCount));
+            shops.add(shopGenerator.generateShop(regionRecord, sellerCount, itemCount, accessoriesCount));
         }
 
         return shops;

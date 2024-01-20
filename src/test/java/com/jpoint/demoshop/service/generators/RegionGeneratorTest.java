@@ -15,7 +15,7 @@ class RegionGeneratorTest {
 
     @Test
     void shouldGenerateRegionWhenMethodInvoked() {
-        RegionRecord regionRecord = regionGenerator.generateRegion(null, 1, 1, 1);
+        RegionRecord regionRecord = regionGenerator.generateRegion(null, 1,1, 1, 1);
         System.out.println(regionRecord);
         Assertions.assertThat(regionRecord).isNotNull();
     }
