@@ -35,6 +35,9 @@ dependencies {
 	testImplementation 'org.testcontainers:junit-jupiter'
 	testImplementation 'org.testcontainers:postgresql'
 
+	// Metrics
+	implementation group: 'io.dropwizard.metrics', name: 'metrics-core', version: '4.2.24' // TODO move Fedor's tests to test
+	testImplementation group: 'io.dropwizard.metrics', name: 'metrics-core', version: '4.2.24'
 }
 
 tasks.named('test') {
